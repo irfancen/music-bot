@@ -282,7 +282,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
     @wavelink.WavelinkMixin.listener("on_track_end")
     @wavelink.WavelinkMixin.listener("on_track_exception")
     async def on_player_stop(self, node, payload):
-        if payload.player.queue.repeat == RepeatMode.CURR:
+        if payload.player.queue.repeat == RepeatMode.CURRENT:
             await payload.player.repeat_track()
         else:
             await payload.player.advance()
