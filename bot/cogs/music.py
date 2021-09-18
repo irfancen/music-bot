@@ -196,8 +196,7 @@ class Player(wavelink.Player):
             await ctx.send(f"Added **{tracks[0].title}** to the queue.")
         else:
             if (track := await self.choose_track(ctx, tracks)) is not None:
-                if not self.queue.is_empty:
-                    await ctx.send(f"Added **{track.title}** to the queue.")
+                await ctx.send(f"Added **{track.title}** to the queue.")
                 self.queue.add(track)
 
         if not self.is_playing and not self.queue.is_empty:
@@ -241,7 +240,6 @@ class Player(wavelink.Player):
 
 
     async def start_playback(self, ctx):
-        await ctx.send(f"Now playing **{self.queue.current_track.title}**.")
         await self.play(self.queue.current_track)
 
     
