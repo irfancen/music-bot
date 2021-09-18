@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 class MusicBot(commands.Bot):
     def __init__(self):
-        self._cogs = [p.stem for p in Path(".").glob("./bot/cogs/*.py")]
+        self._cogs = [p.stem for p in Path(".").glob("./bot/cogs/music.py")]
         super().__init__(
             command_prefix=self.prefix,
             case_insensitive=True,
@@ -72,7 +72,7 @@ class MusicBot(commands.Bot):
 
 
     async def prefix(self, bot, msg):
-        return commands.when_mentioned_or("+")(bot, msg)
+        return commands.when_mentioned_or("-")(bot, msg)
 
 
     async def process_commands(self, msg):
